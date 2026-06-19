@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import bg from "../assets/apartment1.jpg";
+import bg from "../assets/bg-image10.jpg";
 import img from "../assets/bg-image.jpg";
 import img2 from "../assets/bg-image2.jpg";
+
 export default function Home() {
   const container = [
     {
       tittle: "Drive for minutes",
-      desc: "Book a car, unlock it with your phobne, and pay for the time and distance you drive.",
+      desc: "Book a car, unlock it with your phone, and pay for the time and distance you drive.",
       img: bg,
     },
     {
@@ -16,65 +17,100 @@ export default function Home() {
     },
     {
       tittle: "Park for free",
-      desc: "NO fees in designated areas, whether you're taking a break or ending your trip.",
+      desc: "No fees in designated areas, whether you're taking a break or ending your trip.",
       img: img2,
     },
   ];
+
   return (
-    <div className="bg-black h-full w-full text-white">
-      <div className="bgImage w-full h-130 md:h-150 bg-cover bg-center py-35 md:py-50 px-10 md:px-30">
-        <div className="max-w-xl">
-          <h3 className="text-gray-500 font-bold text-xl md:text-2xl">
-            Bolt Drive car rentals
+    <div className="bg-black min-h-screen w-full text-white overflow-x-hidden antialiased selection:bg-green-500 selection:text-white">
+      
+      {/* ==========================================
+          HERO SECTION
+          ========================================== */}
+      <div 
+        className="bgImage w-full min-h-[550px] md:min-h-[650px] bg-cover bg-center flex items-center pt-24 pb-16 px-6 sm:px-12 md:px-24"
+        style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${bg})` }}
+      >
+        <div className="max-w-2xl relative z-10 space-y-4">
+          <h3 className="text-green-400 font-mono text-xs sm:text-sm tracking-widest uppercase font-bold">
+            Bolt Drive Car Rentals
           </h3>
-          <h1 className="text-5xl md:text-7xl font-bold py-6">
-            A car when you need one
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-none uppercase">
+            A car when <br className="hidden sm:inline" /> you need one
           </h1>
-          <p className="text-lg max-w-lg font-semibold">
-            No servie checks, insurance forms, fuel prices, or parking fees.
+          <p className="text-gray-300 text-sm sm:text-lg font-light leading-relaxed max-w-lg">
+            No service checks, insurance forms, fuel prices, or parking fees. 
             Drive new cars at low rates with Bolt Drive car rental.
           </p>
-          <button className="bg-green-500 cursor-pointer hover:bg-green-700 flex w-full justify-center py-2 rounded-md mt-6 md:w-fit md:px-6">
-            Get the app
-          </button>
-        </div>
-      </div>
-      <div className="text-center w-full bg-white/3 py-20">
-        <h1 className="text-3xl mb-5 font-bold md:text-5xl">
-          Car rental on demand
-        </h1>
-        <p className="max-w-lg mx-auto mb-3 text-gray-400 text-lg font-semibold">
-          With Bolt Drive car-sharing, you pay for the time and distance you
-          drive. Nothing more.
-        </p>
-        <p className="text-sm text-gray-400 font-medium">
-          see all available services in the app
-        </p>
-        <div className=" px-10 py-30 w-full flex flex-col">
-          <div className="flex flex-col w-full gap-10 flex-wrap">
-            {container.map((item, index) => (
-              <>
-                <div
-                  key={index}
-                  className=" w-50 mx-auto flex border-green-500 border-4 h-100 rounded-2xl transition duration-500 hover:scale-[1.03] cursor-cell"
-                >
-                  <div className="border-5 rounded-2xl h-98 border-black">
-                    <img
-                      src={item.img}
-                      alt=""
-                      className="w-50 h-full rounded-t-2xl"
-                    />
-                  </div>
-                </div>
-                <div className="max-w-75 mx-auto">
-                  <h1>{item.tittle}</h1>
-                  <p>{item.desc}</p>
-                </div>
-              </>
-            ))}
+          <div className="pt-4">
+            <button className="bg-green-500 text-white font-bold tracking-wide text-xs uppercase cursor-pointer hover:bg-green-400 active:scale-[0.98] transition duration-200 w-full sm:w-fit px-8 py-4 rounded-xl shadow-lg shadow-green-500/20">
+              Get the app
+            </button>
           </div>
         </div>
       </div>
+
+      {/* ==========================================
+          FEATURES SECTION
+          ========================================== */}
+      <div className="w-full bg-neutral-950 py-20 border-t border-white/5">
+        
+        {/* INTRODUCTION CONTENT HEADER */}
+        <div className="text-center space-y-3 max-w-2xl mx-auto mb-12 sm:mb-24 px-4">
+          <h2 className="text-3xl sm:text-5xl font-black tracking-tight uppercase">
+            Car rental on demand
+          </h2>
+          <p className="text-gray-400 text-sm sm:text-base font-light leading-relaxed">
+            With Bolt Drive car-sharing, you pay for the time and distance you drive. Nothing more.
+          </p>
+          <div className="inline-block bg-white/5 border border-white/10 px-4 py-1.5 rounded-full">
+            <p className="text-[10px] sm:text-xs text-gray-400 font-mono tracking-wider uppercase">
+              See all available services in the app
+            </p>
+          </div>
+        </div>
+
+        {/* 📱 HORIZONTAL SCROLL CONTEXT FOR MOBILE / STABLE GRID FOR DESKTOP */}
+        <div className="w-full max-w-6xl mx-auto px-4 md:px-0">
+          <div className="flex flex-nowrap md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 scrollbar-hide">
+            {container.map((item, index) => (
+              <div
+                key={index}
+                className="group bg-white/[0.02] border border-white/10 rounded-3xl p-5 backdrop-blur-md hover:border-green-500/30 transition-all duration-300 flex flex-col justify-between space-y-6 shrink-0 w-[85%] sm:w-[60%] md:w-auto snap-center"
+              >
+                {/* INTERACTIVE MEDIA ITEM CAPTURE */}
+                <div className="relative overflow-hidden aspect-[4/3] rounded-2xl border border-white/5 bg-neutral-900">
+                  <img
+                    src={item.img}
+                    alt={item.tittle}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+
+                {/* TEXT METADATA BLOCK */}
+                <div className="space-y-2 grow px-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono bg-green-500/10 border border-green-500/20 text-green-400 px-2 py-0.5 rounded-md font-bold">
+                      0{index + 1}
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-black uppercase text-white group-hover:text-green-400 transition-colors duration-200">
+                      {item.tittle}
+                    </h3>
+                  </div>
+                  <p className="text-gray-400 text-xs sm:text-sm font-light leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
     </div>
   );
 }
