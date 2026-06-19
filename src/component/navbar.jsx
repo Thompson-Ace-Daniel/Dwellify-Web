@@ -55,6 +55,7 @@ export default function Navbar() {
                     ? "text-neutral-700 hover:bg-neutral-100"
                     : "text-white hover:bg-white/10"
                 }`}
+                to={"/support"}
             >
               Support
             </Link>
@@ -109,6 +110,7 @@ export default function Navbar() {
           <Link
             onClick={() => setIsOpen(false)}
             className="text-lg font-bold tracking-tight text-center uppercase text-neutral-400 hover:text-white transition"
+            to={"/support"}
           >
             Support
           </Link>

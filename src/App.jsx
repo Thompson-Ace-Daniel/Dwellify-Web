@@ -4,6 +4,7 @@ import Navbar from "./component/navbar";
 import GetApp from "./component/getApp";
 import About from "./component/about";
 import Careers from "./component/careers";
+import Support from "./component/support";
 export default function App() {
   return (
     <>
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/get-app" element={<GetApp />} />
           <Route path="/about" element={<About />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/support" element={<Support />} />
         </Routes>
       </BrowserRouter>
     </>
