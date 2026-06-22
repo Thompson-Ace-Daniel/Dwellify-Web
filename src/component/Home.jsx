@@ -19,7 +19,7 @@ import bg from "../assets/bg-image10.jpg";
 import img from "../assets/bg-image.jpg";
 import img2 from "../assets/bg-image2.jpg";
 import img3 from "../assets/bg-image3.jpg";
-
+import { Link } from "react-router-dom";
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [openArrow, setOpenArrow] = useState(false);
@@ -68,7 +68,7 @@ export default function Home() {
           HERO SECTION
           ========================================== */}
       <div
-        className="bgImage w-full min-h-[600px] md:min-h-[720px] bg-cover bg-center flex items-center pt-24 pb-36 md:pb-48 px-6 sm:px-12 md:px-24 relative"
+        className="bgImage w-full min-h-150 md:min-h-180 bg-cover bg-center flex items-center pt-24 pb-36 md:pb-48 px-6 sm:px-12 md:px-24 relative"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.6)), url(${bg})`,
         }}
@@ -95,7 +95,7 @@ export default function Home() {
           </div>
 
           {/* FLOATING FILTER ROW */}
-          <div className="absolute rounded-2xl font-bold bg-white top-[112%] left-0 grid grid-cols-4 gap-6 items-center p-4 text-black shadow-2xl z-20 min-w-[850px] max-w-5xl hidden lg:grid">
+          <div className="absolute rounded-2xl font-bold bg-white top-[112%] left-0 grid-cols-4 gap-6 items-center p-4 text-black shadow-2xl z-20 min-w-212.5 max-w-5xl hidden lg:grid">
             <div className="flex items-center justify-between border-r border-neutral-200 pr-4">
               <div className="flex items-center gap-3">
                 <LocationEdit size={28} className="text-neutral-700" />
@@ -114,7 +114,7 @@ export default function Home() {
                 <HomeIcon size={24} className="text-neutral-700" />
                 <div>
                   <h4 className="text-xs font-bold text-neutral-900">Property Configuration</h4>
-                  <p className="text-[11px] text-neutral-500 font-normal mt-0.5">Studio, Penthouse, Duplex</p>
+                  <p className="text-[11px] text-neutral-500 font-normal mt-0.5">Hotel, Shortlet, Apartment</p>
                 </div>
               </div>
               <button onClick={() => setOpenArrow2(!openArrow2)} className="text-neutral-400 hover:text-neutral-900 cursor-pointer transition">
@@ -149,21 +149,21 @@ export default function Home() {
           ========================================== */}
       <div className="w-full bg-neutral-950 pt-28 pb-12 border-t border-white/5">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="space-y-2 p-6 bg-white/[0.01] border border-white/5 rounded-2xl">
+          <div className="space-y-2 p-6 bg-white/1 border border-white/5 rounded-2xl">
             <Zap size={24} className="text-blue-600" />
             <h3 className="text-base font-bold text-white pt-2">Real-Time Application Tracking</h3>
             <p className="text-xs text-gray-400 font-light leading-relaxed">
               Monitor your rental approval pipeline step-by-step. Receive direct systemic notifications when your documents undergo structural underwriting evaluation so you are never left guessing.
             </p>
           </div>
-          <div className="space-y-2 p-6 bg-white/[0.01] border border-white/5 rounded-2xl">
+          <div className="space-y-2 p-6 bg-white/1 border border-white/5 rounded-2xl">
             <Building size={24} className="text-amber-500" />
             <h3 className="text-base font-bold text-white pt-2">Zero-Spam Indexing Policies</h3>
             <p className="text-xs text-gray-400 font-light leading-relaxed">
               We remove expired or duplicate listing frameworks automatically every 24 hours. Renters gain access strictly to currently active real estate inventory across premium metropolitan communities.
             </p>
           </div>
-          <div className="space-y-2 p-6 bg-white/[0.01] border border-white/5 rounded-2xl">
+          <div className="space-y-2 p-6 bg-white/1 border border-white/5 rounded-2xl">
             <Key size={24} className="text-blue-600" />
             <h3 className="text-base font-bold text-white pt-2">Integrated Virtual Walkthroughs</h3>
             <p className="text-xs text-gray-400 font-light leading-relaxed">
@@ -199,7 +199,7 @@ export default function Home() {
               {container.map((item, index) => (
                 <div
                   key={index}
-                  className={`group bg-white/[0.01] border border-white/10 rounded-3xl p-6 backdrop-blur-md hover:border-blue-600/30 transition-all duration-300 flex flex-col justify-between space-y-6 w-full shrink-0 lg:w-auto ${
+                  className={`group bg-white/1 border border-white/10 rounded-3xl p-6 backdrop-blur-md hover:border-blue-600/30 transition-all duration-300 flex flex-col justify-between space-y-6 w-full shrink-0 lg:w-auto ${
                     index === 2 ? "lg:col-span-2 xl:col-span-1 lg:max-w-[50%] xl:max-w-none mx-auto lg:w-full" : ""
                   }`}
                 >
@@ -225,14 +225,14 @@ export default function Home() {
                   </div>
 
                   {/* MEDIA IMAGE CONTAINER CARD */}
-                  <div className="relative overflow-hidden aspect-[4/3] rounded-2xl border border-white/5 bg-neutral-900">
+                  <div className="relative overflow-hidden aspect-4/3 rounded-2xl border border-white/5 bg-neutral-900">
                     <img
                       src={item.img}
                       alt={item.tittle}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-300" />
                   </div>
                 </div>
               ))}
@@ -316,27 +316,11 @@ export default function Home() {
           <div className="space-y-3">
             <h3 className="text-white font-bold text-xs uppercase tracking-wider">Company</h3>
             <ul className="space-y-2 text-xs font-light">
-              <li><a href="#" className="hover:text-blue-500 transition">About Our Vision</a></li>
-              <li><a href="#" className="hover:text-blue-500 transition">Safety Guidelines</a></li>
-              <li><a href="#" className="hover:text-blue-500 transition">Contact Support</a></li>
-              <li><a href="#" className="hover:text-blue-500 transition">Real Estate Careers</a></li>
+              <li><Link to={"/about"} className="hover:text-blue-500 transition">About Our Vision</Link></li>
+              <li><Link to={""} className="hover:text-blue-500 transition">Safety Guidelines</Link></li>
+              <li><Link to={"/support"} className="hover:text-blue-500 transition">Contact Support</Link></li>
+              <li><Link to={"/carrers"} className="hover:text-blue-500 transition">Real Estate Careers</Link></li>
             </ul>
-          </div>
-
-          {/* Newsletter Input Area */}
-          <div className="space-y-3">
-            <h3 className="text-white font-bold text-xs uppercase tracking-wider">Stay Updated</h3>
-            <p className="text-xs font-light text-neutral-500">Subscribe to receive immediate notifications regarding premium property value updates and neighborhood drop reports.</p>
-            <div className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="bg-neutral-900 border border-white/10 px-3 py-2 rounded-lg text-xs w-full text-white focus:outline-none focus:border-blue-600 transition"
-              />
-              <button className="bg-blue-600 hover:bg-blue-700 text-white text-xs px-4 py-2 rounded-lg transition font-medium cursor-pointer">
-                Join
-              </button>
-            </div>
           </div>
         </div>
 
@@ -344,9 +328,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-[11px] text-neutral-600 font-mono">
           <p>© {new Date().getFullYear()} Dwellify Inc. All rights reserved.</p>
           <div className="flex gap-4 mt-2 sm:mt-0">
-            <a href="#" className="hover:text-neutral-400 transition">Privacy Policy</a>
-            <a href="#" className="hover:text-neutral-400 transition">Terms of Service</a>
-            <a href="#" className="hover:text-neutral-400 transition">Cookie Preferences</a>
+            <Link to={"/"}  className="hover:text-neutral-400 transition">Privacy Policy</Link>
+            <Link to={"/"}  className="hover:text-neutral-400 transition">Terms of Service</Link>
+            <Link to={"/"} className="hover:text-neutral-400 transition">Cookie Preferences</Link>
           </div>
         </div>
       </footer>

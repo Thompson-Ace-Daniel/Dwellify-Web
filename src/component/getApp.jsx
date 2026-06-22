@@ -90,7 +90,7 @@ export default function GetApp() {
 
               {/* Play Store Button */}
               <a 
-                href="#download-google" 
+                href="playstore.com/Dwellify" 
                 className="flex items-center gap-3 bg-neutral-900 border border-white/10 hover:border-blue-600/50 hover:bg-neutral-800 text-white rounded-xl px-5 py-3 transition cursor-pointer group min-w-[180px]"
               >
                 <Play className="text-white fill-white group-hover:text-blue-500 group-hover:fill-blue-500 transition" size={24} />
@@ -136,14 +136,14 @@ export default function GetApp() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl -z-10" />
             
             {/* Phone Frame Shell Wrapper */}
-            <div className="w-[280px] h-[560px] bg-neutral-900 rounded-[44px] p-3.5 border-4 border-neutral-800 shadow-2xl relative overflow-hidden flex flex-col justify-between">
+            <div className="w-70 h-140 bg-neutral-900 rounded-[44px] p-3.5 border-4 border-neutral-800 shadow-2xl relative overflow-hidden flex flex-col justify-between">
               {/* Speaker Speaker Notched Sensor */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 h-5 w-32 bg-neutral-800 rounded-b-2xl z-30 flex items-center justify-center">
                 <div className="w-12 h-1 bg-neutral-700 rounded-full mb-1" />
               </div>
 
               {/* Dynamic UI Content Mirroring inside app */}
-              <div className="w-full h-full rounded-[32px] bg-black overflow-hidden relative flex flex-col justify-between p-4 pt-8">
+              <div className="w-full h-full rounded-4xl bg-black overflow-hidden relative flex flex-col justify-between p-4 pt-8">
                 <div className="space-y-3">
                   <div className="flex justify-between items-center text-[10px] text-neutral-500 font-mono">
                     <span>9:41 AM</span>
@@ -151,7 +151,7 @@ export default function GetApp() {
                   </div>
                   <h4 className="text-xs font-black text-white">Dwellify Premium</h4>
                   {/* Inside card mockup image view */}
-                  <div className="w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/5 relative bg-neutral-900">
+                  <div className="w-full aspect-4/3 rounded-xl overflow-hidden border border-white/5 relative bg-neutral-900">
                     <img src={screenMockup} alt="In-app screen display view" className="w-full h-full object-cover" />
                     <span className="absolute bottom-2 left-2 text-[8px] bg-blue-600 px-2 py-0.5 rounded-md font-bold font-mono">VERIFIED</span>
                   </div>
@@ -210,7 +210,7 @@ export default function GetApp() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
             {benefits.map((benefit, index) => (
-              <div key={index} className="space-y-2 p-6 bg-white/[0.01] border border-white/5 rounded-2xl hover:border-blue-600/20 transition duration-300">
+              <div key={index} className="space-y-2 p-6 bg-white/1 border border-white/5 rounded-2xl hover:border-blue-600/20 transition duration-300">
                 <div className="flex gap-2 items-center text-blue-500">
                   <CheckCircle2 size={16} />
                   <h3 className="text-sm font-bold text-white">{benefit.title}</h3>

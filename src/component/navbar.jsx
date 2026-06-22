@@ -1,11 +1,20 @@
 import { useState, useEffect } from "react";
-import { Globe, Menu, X, } from "lucide-react";
+import { useLocation } from "react-router-dom";
+import { Globe, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import DwellifyLogo from "./dwellifyLogo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const location = useLocation();
+
+  const navbar = [
+    { name: "support", path: "/support" },
+    { name: "Careers", path: "/careers" },
+    { name: "about", path: "/about" },
+  ];
   // TRACK SCROLL VELOCITY / DISTANCE
   useEffect(() => {
     const handleScroll = () => {
@@ -30,12 +39,12 @@ export default function Navbar() {
               : "bg-transparent text-white border-transparent"
           }`}
       >
-        {/* BRAND IDENTITY LOGO */}
-        <Link
-          to={"/"}
-          className="font-black text-blue-500 text-2xl tracking-tight uppercase transition-colors"
-        >
-          Dwellify
+        {/* BRAND IDENTITY INTEGRATED LOGO */}
+        <Link to={"/"} className="transition-opacity hover:opacity-90 md:px-3">
+          {/* We invert the inline brand text targeting elements based on theme context using CSS filters or text inheritance */}
+          <div className={isScrolled ? "[&_span.text-white]:text-black" : ""}>
+            <DwellifyLogo className="h-9 w-auto" />
+          </div>
         </Link>
 
         {/* CONTROLS & INTERACTION ENGINE */}
@@ -48,17 +57,24 @@ export default function Navbar() {
 
           {/* DESKTOP DESCRIPTIVE ACTION ROUTES */}
           <div className="hidden md:flex items-center gap-4">
-            <Link
-              className={`px-5 py-2.5 text-xs uppercase tracking-wider font-bold rounded-full transition
+            {navbar.map((link, index) => {
+              const isActive = location.pathname === link.path;
+              return (
+                <Link
+                key={index}
+                  className={`px-5 py-2.5 text-xs uppercase tracking-wider font-bold rounded-full transition
+                    ${isActive ? "border" : "border-none"}
                 ${
                   isScrolled
                     ? "text-neutral-700 hover:bg-neutral-100"
                     : "text-white hover:bg-white/10"
                 }`}
-                to={"/support"}
-            >
-              Support
-            </Link>
+                to={link.path}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
             <Link
               className={`px-6 py-2.5 text-xs uppercase tracking-wider font-black rounded-full transition shadow-sm
                 ${
@@ -66,19 +82,9 @@ export default function Navbar() {
                     ? "bg-blue-500 text-white hover:bg-blue-400"
                     : "bg-white text-black hover:bg-neutral-100"
                 }`}
-                to={"/get-app"}
+              to={"/get-app"}
             >
               Get App
-            </Link>
-            <Link className={`px-5 py-2.5 text-xs uppercase tracking-wider font-bold rounded-full transition
-                ${
-                  isScrolled
-                    ? "text-neutral-700 hover:bg-neutral-100"
-                    : "text-white hover:bg-white/10"
-                }`}
-                to={"/about"}
-            >
-              About
             </Link>
           </div>
 
@@ -94,8 +100,8 @@ export default function Navbar() {
       </nav>
 
       {/* ==========================================
-         MOBILE DRAWER PANEL LAYOUT
-         ========================================== */}
+          MOBILE DRAWER PANEL LAYOUT
+          ========================================== */}
       <div
         className={`fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity md:hidden duration-300
           ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
@@ -115,14 +121,24 @@ export default function Navbar() {
             Support
           </Link>
           <hr className="border-white/5" />
-          <Link className="text-lg font-bold tracking-tight text-center uppercase text-neutral-400 hover:text-white transition"
-          onClick={() => setIsOpen(false)} to={"/about"}
+          <Link
+            onClick={() => setIsOpen(false)}
+            className="text-lg font-bold tracking-tight text-center uppercase text-neutral-400 hover:text-white transition"
+            to={"/careers"}
+          >
+            Careers
+          </Link>
+          <hr className="border-white/5" />
+          <Link
+            className="text-lg font-bold tracking-tight text-center uppercase text-neutral-400 hover:text-white transition"
+            onClick={() => setIsOpen(false)}
+            to={"/about"}
           >
             About
           </Link>
-          <hr className="border-white/5"/>
+          <hr className="border-white/5" />
           <Link
-          to={"/get-app"}
+            to={"/get-app"}
             onClick={() => setIsOpen(false)}
             className="w-full bg-blue-500 text-center font-bold uppercase tracking-wider text-xs py-3.5 rounded-xl text-white shadow-lg shadow-blue-500/10"
           >

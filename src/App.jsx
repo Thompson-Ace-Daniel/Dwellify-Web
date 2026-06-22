@@ -9,7 +9,7 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+          <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/get-app" element={<GetApp />} />
